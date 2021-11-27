@@ -1,10 +1,10 @@
 <?php
 
 include 'conexion_login.php'; 
-$nombre=$_POST['usuario'];
-$email=$_POST['correoo'];
-$contra=$_POST['contrasenaa'];
-$sql = $conectar->query("INSERT into usuario (nombre,correo,contrasena) values ('$nombre','$email','$contra')");
+$usuario=$_POST["usuario"];
+$correoo=$_POST["correoo"];
+$contrasenaa=$_POST["contrasenaa"];
+$sql = $db->query("INSERT into usuario (nombre,correo,contrasena) values ('$usuario','$correoo','$contrasenaa')");
 
 if($sql){
     echo'<script type="text/javascript">
