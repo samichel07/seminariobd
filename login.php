@@ -19,7 +19,7 @@ if($result1){
 
     echo'<script type="text/javascript">
     alert("Bienvenido");
-    window.location.href="administrador.html";
+    window.location.href="administrador.php";
     </script>';
 } 
 }else{
