@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-11-2021 a las 03:17:18
+-- Tiempo de generación: 28-11-2021 a las 18:57:31
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.7
 
@@ -35,6 +35,14 @@ CREATE TABLE `afinidad` (
   `interpretaciones` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `afinidad`
+--
+
+INSERT INTO `afinidad` (`id_afinidad`, `obra`, `papel`, `artista`, `interpretaciones`) VALUES
+(1, 'Lucas', 'Lucas', 'Odin Dupeyron', 100),
+(2, 'La jaula de las locas', 'Albin', 'Mario Iván Martínez', 100);
+
 -- --------------------------------------------------------
 
 --
@@ -52,6 +60,14 @@ CREATE TABLE `artista` (
   `cantidad_interpretaciones` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `artista`
+--
+
+INSERT INTO `artista` (`nombre_artistico`, `nombre`, `apellidos`, `edad`, `cache`, `descripcion`, `papel_afin`, `cantidad_interpretaciones`) VALUES
+('Mario Iván Martínez', 'Mario Iván', 'Martínez Morales', 59, 8000, 'Actor, productor, escritor, diseñador y cantante mexicano', 'Albin', 100),
+('Odin Dupeyron', 'Odin', 'Dupeyron Navarrete', 51, 6000, 'Artista multifacético que invita a redescubrir el sentido de la vida', 'Lucas', 100);
+
 -- --------------------------------------------------------
 
 --
@@ -66,6 +82,14 @@ CREATE TABLE `autor` (
   `precio_libreto` int(11) NOT NULL,
   `precio_representacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `autor`
+--
+
+INSERT INTO `autor` (`nombre_artistico`, `nombre`, `apellidos`, `edad`, `precio_libreto`, `precio_representacion`) VALUES
+('Matías Gorlero', 'Matías', 'Gorlero Vilaró', 59, 20000, 4000),
+('Odin Dupeyron', 'Odin', 'Dupeyron Navarrete', 51, 15000, 1500);
 
 -- --------------------------------------------------------
 
@@ -82,6 +106,14 @@ CREATE TABLE `funcion` (
   `id_afinidad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `funcion`
+--
+
+INSERT INTO `funcion` (`id_funcion`, `fecha`, `hora`, `teatro`, `obra`, `id_afinidad`) VALUES
+(1, '2021-11-27', '19:40:00', 'Teatro del Parque Interlomas', 'Lucas', 1),
+(2, '2021-11-28', '20:30:00', 'Teatro Hidalgo', 'La jaula de las locas', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -94,6 +126,14 @@ CREATE TABLE `obra` (
   `anio_publicacion` year(4) NOT NULL,
   `representaciones` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `obra`
+--
+
+INSERT INTO `obra` (`titulo_obra`, `autor`, `anio_publicacion`, `representaciones`) VALUES
+('La jaula de las locas', 'Matías Gorlero', 2017, 1200),
+('Lucas', 'Odin Dupeyron', 2017, 1000);
 
 -- --------------------------------------------------------
 
@@ -108,6 +148,14 @@ CREATE TABLE `papel` (
   `atrezo` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `papel`
+--
+
+INSERT INTO `papel` (`nombre_papel`, `obra`, `duracion`, `atrezo`) VALUES
+('Albin', 'La jaula de las locas', '00:35:00', 'Vestido, saco, zapatillas, peluca'),
+('Lucas', 'Lucas', '00:47:00', 'Tenis, jeans, playera');
+
 -- --------------------------------------------------------
 
 --
@@ -119,10 +167,18 @@ CREATE TABLE `teatro` (
   `calle_numero` varchar(50) NOT NULL,
   `localidad` varchar(50) NOT NULL,
   `provincia` varchar(50) NOT NULL,
-  `telefono` int(11) NOT NULL,
+  `telefono` varchar(50) NOT NULL,
   `categoria` varchar(50) NOT NULL,
   `aforo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `teatro`
+--
+
+INSERT INTO `teatro` (`nombre_teatro`, `calle_numero`, `localidad`, `provincia`, `telefono`, `categoria`, `aforo`) VALUES
+('Teatro del Parque Interlomas', 'Av. Jesús del Monte 41, Hda. de las Palmas', 'Huixquilucan', 'Estado de México', '55 5247 4325', 'Mediano', 700),
+('Teatro Hidalgo', 'Av. Hidalgo 23, Centro Histórico', 'Guerrero, Cuauhtémoc', 'Ciudad de México', ' 555326 5445', 'Mediano', 816);
 
 --
 -- Índices para tablas volcadas
