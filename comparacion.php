@@ -193,16 +193,15 @@
                 </div>
             </div><!-- .animated -->
         </div><!-- .content -->
-    <select class="custom-select">
-        <option selected>SELECCIONA LA TABLA QUE DESEAS ACTUALIZAR</option>
-        <option value="1">Afinidades</option>
-        <option value="2">Artistas</option>
-        <option value="3">Autor</option>
-        <option value="4">Funcion</option>
-        <option value="5">Obra</option>
-        <option value="6">Papel</option>
-        <option value="7">Teatro</option>
-    </select>
+
+        <div class="campo">
+			<h4 class="title" >PUBLICACION OBRA</h4>
+			<input class="form-control col-6" type="text" name="anio_publicacion" id="nombre" placeholder="Buscar por año">
+		</div>
+
+        <section id="tabla_resultado" style="margin-bottom: 80px;" >
+		<!-- AQUI SE DESPLEGARA LA TABLA DE CONSULTA -->
+		</section>
 
 
 
@@ -212,6 +211,8 @@
     <!-- Right Panel -->
 
     <!-- Scripts -->
+    
+   
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
@@ -229,7 +230,7 @@
     <script src="assets/js/lib/data-table/buttons.print.min.js"></script>
     <script src="assets/js/lib/data-table/buttons.colVis.min.js"></script>
     <script src="assets/js/init/datatables-init.js"></script>
-
+    <script src="peticion.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {
