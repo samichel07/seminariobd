@@ -158,7 +158,7 @@
                     <div class="col-sm-4">
                         <div class="page-header float-left">
                             <div class="page-title">
-                                <h1>ACTUALIZAR</h1>
+                                <h1>OPERADOR DE COMPARACIÓN</h1>
                             </div>
                         </div>
                     </div>
@@ -166,7 +166,6 @@
                         <div class="page-header float-right">
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
-                                    <li><a href="#">ACTUALIZAR</a></li>
                                     <li><a href="#">Table</a></li>
                                     <li class="active">Data table</li>
                                 </ol>
@@ -184,7 +183,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Actualizar tablas</strong>
+                                <strong class="card-title">BUSCAR POR AÑO DE PUBLICACIÓN</strong>
                             </div>
                             <div class="card-body">
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
@@ -195,7 +194,6 @@
         </div><!-- .content -->
 
         <div class="campo">
-			<h4 class="title" >PUBLICACION OBRA</h4>
 			<input class="form-control col-6" type="text" name="anio_publicacion" id="nombre" placeholder="Buscar por año">
 		</div>
 
