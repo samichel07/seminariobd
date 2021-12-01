@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Actualizar tablas - Teatro Marry Place</title>
+    <title>Procedimiento Almacenado - Teatro Marry Place</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -90,13 +90,6 @@
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tabla Función</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li>
-                            <li><i class="fa fa-table"></i><a href="busquedafuncion.html">Búsqueda de funciones</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Forms</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-th"></i><a href="forms-basic.html">Basic Form</a></li>
@@ -158,7 +151,7 @@
                     <div class="col-sm-4">
                         <div class="page-header float-left">
                             <div class="page-title">
-                                <h1>OPERADOR DE COMPARACIÓN</h1>
+                                <h1>Menú Principal</h1>
                             </div>
                         </div>
                     </div>
@@ -166,8 +159,9 @@
                         <div class="page-header float-right">
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
-                                    <li><a href="#">Table</a></li>
-                                    <li class="active">Data table</li>
+                                    <li><a href="administrador.html">Menú Principal</a></li>
+                                    <li><a href="#">Tabla Proc almacenado</a></li>
+                                    <li class="active">Procedimiento almacenado</li>
                                 </ol>
                             </div>
                         </div>
@@ -183,34 +177,71 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">BUSCAR POR AÑO DE PUBLICACIÓN</strong>
+                                <strong class="card-title">Procedimiento almacenado</strong>
                             </div>
-                            <div class="card-body">
-                                <table id="bootstrap-data-table" class="table table-striped table-bordered">
-                                   
+                            <div class="row main-row">
+					<div class="col-md-12">
+						<table class="table table-hover">
+							<thead class="table-success table-condensed table-condensedtable-striped" style="background:#DDE0E3">
+								<tr>
+									<th>Título obra</th>
+									<th>Autor</th>
+									<th>Año de publicación</th>
+									<th>Representaciones</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<?php
+								require 'conexion_proc.php';
+								$sql="Call obtenerRepresentacionesObra (1);";
+								$query = mysqli_query($connection, $sql);
+								$filas = $query->num_rows;
+								if($filas >=0){
+									while ($row = $query->fetch_assoc()){
+									
+								?>
+								<tr>
+										<th><?php echo $row['titulo_obra'] ?></th>
+										<th><?php echo $row['autor'] ?></th>
+										<th><?php echo $row['anio_publicacion'] ?></th>
+										<th><?php echo $row['representaciones'] ?></th>
+						
+								</tr>
+								<?php
+									}
+								}
+								?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+                        </div>
+                    </div>
+
 
                 </div>
             </div><!-- .animated -->
         </div><!-- .content -->
 
-        <div class="campo">
-			<input class="form-control col-6" type="text" name="anio_publicacion" id="nombre" placeholder="Buscar por año">
-		</div>
 
-        <section id="tabla_resultado" style="margin-bottom: 80px;" >
-		<!-- AQUI SE DESPLEGARA LA TABLA DE CONSULTA -->
-		</section>
+        <div class="clearfix"></div>
 
-
-
+        <footer class="site-footer">
+            <div class="footer-inner bg-white">
+                <div class="row">
+                    <div class="col-sm-6">
+                        Copyright &copy; Teatro Marry Place 2021
+                    </div>
+                </div>
+            </div>
+        </footer>
 
     </div><!-- /#right-panel -->
 
     <!-- Right Panel -->
 
     <!-- Scripts -->
-    
-   
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
@@ -228,7 +259,7 @@
     <script src="assets/js/lib/data-table/buttons.print.min.js"></script>
     <script src="assets/js/lib/data-table/buttons.colVis.min.js"></script>
     <script src="assets/js/init/datatables-init.js"></script>
-    <script src="peticion.js"></script>
+
 
     <script type="text/javascript">
         $(document).ready(function() {

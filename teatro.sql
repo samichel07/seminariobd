@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-11-2021 a las 18:57:31
+-- Tiempo de generación: 01-12-2021 a las 21:07:20
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.7
 
@@ -20,6 +20,18 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `teatro`
 --
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `obtenerRepresentacionesObra` (IN `representaciones` INT(11))  BEGIN
+SELECT *
+FROM obra
+WHERE representaciones = representaciones;
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
