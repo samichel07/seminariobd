@@ -1,4 +1,10 @@
-
+<?php 
+   require 'conexion_teatro.php';
+   $id=$_GET['id']; 
+   $sql="SELECT *  FROM funcion  WHERE id_funcion='$id'";
+   $query=mysqli_query($db,$sql);
+   $row=mysqli_fetch_array($query);
+?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -21,7 +27,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
     <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style_editar.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -32,61 +38,19 @@
     <!-- Left Panel -->
 
     <aside id="left-panel" class="left-panel">
-    <nav class="navbar navbar-expand-sm navbar-default">
+        <nav class="navbar navbar-expand-sm navbar-default">
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="administrador.php"><i class="menu-icon fa fa-laptop"></i>Menú Principal</a>
+                        <a href="index.html"><i class="menu-icon fa fa-laptop"></i>Menú Principal</a>
                     </li>
                     <li class="menu-title">Tablas</li><!-- /.menu-title -->
                     
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tabla Artista</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tables</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li>
-                            <li><i class="fa fa-table"></i><a href="busquedaartista.php">Búsqueda de artistas</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tabla Autor</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li>
-                            <li><i class="fa fa-table"></i><a href="busquedaautor.php">Búsqueda de autores</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tabla Teatro</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li>
-                            <li><i class="fa fa-table"></i><a href="busquedateatro.php">Búsqueda de teatros</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tabla Obra</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li>
-                            <li><i class="fa fa-table"></i><a href="busquedaobra.php">Búsqueda de obras</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tabla Papel</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li>
-                            <li><i class="fa fa-table"></i><a href="busquedapapel.php">Búsqueda de personajes</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tabla Afinidad</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li>
-                            <li><i class="fa fa-table"></i><a href="busquedaafinidad.php">Búsqueda de afinidades</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tabla Función</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-table"></i><a href="agregar_funciones.php">Actualizar funciones</a></li>
-                            <li><i class="fa fa-table"></i><a href="busquedafuncion.php">Búsqueda de funciones</a></li>
+                            <li><i class="fa fa-table"></i><a href="tables-data.html">Data Table</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
@@ -219,7 +183,7 @@
                     <div class="col-sm-4">
                         <div class="page-header float-left">
                             <div class="page-title">
-                                <h1>TABLA FUNCIONES</h1>
+                                <h1>Modificar Función</h1>
                             </div>
                         </div>
                     </div>
@@ -227,8 +191,9 @@
                         <div class="page-header float-right">
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
-                                    <li><a href="administrador.php">Menú principal</a></li>
-                                    <li class="active">Tabla Función</li>
+                                    <li><a href=""></a>Menú principal</li>
+                                    <li><a href="agregar_funciones.php">Tabla Funciones</a></li>
+                                    <li class="active">Formulario Actualizar</li>
                                 </ol>
                             </div>
                         </div>
@@ -237,52 +202,27 @@
             </div>
         </div>
 
-        <div class="content">
-            <div class="animated fadeIn">
-                <div class="row">
-                    <div class="col-lg-9">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title">EDITAR FUNCIONES</strong>
-                            </div>
-                            <div class="table-stats order-table ov-h">
-                                <table class="table ">
-                                    <thead>
-                                        <tr>
-                                            <th class="serial"># </th>
-                                            <th class="avatar">FECHA</th>
-                                            <th>HORA</th>
-                                            <th>TEATRO</th>
-                                            <th>OBRA</th>  
-                                            <th>EDITAR</th>  
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php
-                                           require 'conexion_teatro.php';
-                                           $sql="SELECT *  FROM funcion";
-                                           $query=mysqli_query($db,$sql);
-                                           $filas = $query->num_rows;
-                                           if ($filas >=0){
-                                           while($row=$query->fetch_assoc()) {
-                                        ?>
-                                            <tr>
-                                                <td><?php  echo $row['id_funcion']?></td>
-                                                <td><?php  echo $row['fecha']?></td>
-                                                <td><?php  echo $row['hora']?></td>
-                                                <td><?php  echo $row['teatro']?></td>
-                                                <td><?php  echo $row['obra']?></td>        
-                                                <td><a href="actualizar_funcion.php?id=<?php echo $row['id_funcion'] ?>" class="btn btn-info">Editar</a></th>
-                 
-                                    
-                                        <?php 
-                                            } }
-                                        ?>
-                                    </tbody>
-                                </table>
-                            </div> <!-- /.table-stats -->
-                        </div>
-                    </div>
+            
+        <!--Section ACTUALIZAR-->
+        
+        
+	    <div class="row" >
+	     <div class="col-md-4"></div> 
+	         <div class="col-md-4 border">
+	            <form  action="update_funcion.php" method="POST">
+                  
+                    <input type="hidden" name="id" value="<?php echo $row['id_funcion']  ?>">
+                  <p><strong> Fecha de Función:</p>
+                    <input type="text" class="form-control mb-3" name="fecha" placeholder="Fecha funcion" value="<?php echo $row['fecha']  ?>">
+                  <p><strong>Hora de la Obra:</p> 
+                    <input type="text" class="form-control mb-3" name="hora" placeholder="Hora" value="<?php echo $row['hora']  ?>"> 
+	            
+                <button type="submit" name="registrar_internos" class="btn btn-primary btn-block boton"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Actualizar </font></font></button>
+    <br> <br>
+    </form> </div></div></div>
+    
+
+        <!--End section ACTUALIZAR -->
                  
                 
            
@@ -296,7 +236,7 @@
 <footer class="site-footer">
     <div class="footer-inner bg-white">
         <div class="row">
-            <div class="col-sm-6">
+        <div class="col-sm-6">
                 Copyright &copy; 2021 Teatro Marry Place
             </div>
             <div class="col-sm-6 text-right">
