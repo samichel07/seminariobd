@@ -182,7 +182,7 @@
                             <form rol="form" method="POST">
                             <div class="form-group">
                             &nbsp;
-                            <input &nbsp; type="text" class="form-control" id="nombre_artistico" placeholder="Ingrese el nombre artístico que desee consultar" name="nombre_artistico">
+                            <input &nbsp; type="text" class="form-control" id="nombre_artistico" placeholder="Ingrese el nombre artístico del actor que desee consultar" name="nombre_artistico">
                             </div>
                             <button type="submit" class="btn btn-default">Consultar</button>
                         </form>
