@@ -1,3 +1,13 @@
+<?php 
+   require 'conexion_teatro.php';
+   if(isset($_GET['titulo_obra'])){
+    $id=$_GET['titulo_obra']; 
+    $sql="SELECT *  FROM obra  WHERE titulo_obra='$id'";
+    $query=mysqli_query($db,$sql);
+    $row=mysqli_fetch_array($query);
+   }
+  
+?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -6,7 +16,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Búsqueda Obras - Teatro Marry Place</title>
+    <title>Actualizar tablas - Teatro Marry Place</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -90,6 +100,13 @@
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tabla Función</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li>
+                            <li><i class="fa fa-table"></i><a href="busquedafuncion.html">Búsqueda de funciones</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Forms</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-th"></i><a href="forms-basic.html">Basic Form</a></li>
@@ -151,7 +168,7 @@
                     <div class="col-sm-4">
                         <div class="page-header float-left">
                             <div class="page-title">
-                                <h1>Menú Principal</h1>
+                                <h1>ACTUALIZAR</h1>
                             </div>
                         </div>
                     </div>
@@ -159,9 +176,9 @@
                         <div class="page-header float-right">
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
-                                    <li><a href="administrador.html">Menú Principal</a></li>
-                                    <li><a href="#">Tabla Obra</a></li>
-                                    <li class="active">Búsqueda De Obras</li>
+                                    <li><a href="#">ACTUALIZAR</a></li>
+                                    <li><a href="#">Table</a></li>
+                                    <li class="active">Data table</li>
                                 </ol>
                             </div>
                         </div>
@@ -177,70 +194,59 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Búsqueda de obras</strong>
+                                <strong class="card-title">Actualizar tablas</strong>
                             </div>
-                            <form rol="form" method="POST">
-                            <div class="form-group">
-                            &nbsp;
-                            <input &nbsp; type="text" class="form-control" id="titulo_obra" placeholder="Ingrese el título de la obra que desee consultar" name="titulo_obra">
-                            </div>
-                            <button type="submit" class="btn btn-default">Consultar</button>
-                        </form>
-                        &nbsp;
-                        <?php
-                        if($_POST){
-                        require('credenciales.php');
-                        $con=Conectar();
-                        $id=$_POST['titulo_obra'];
-                        $SQL = 'SELECT titulo_obra, autor, anio_publicacion, representaciones  FROM obra WHERE titulo_obra =:Titulo_obra';
-                        $stmt = $con->prepare($SQL);
-                        $result = $stmt->execute(array(':Titulo_obra'=>$id));
-                        $rows = $stmt->fetchAll(\PDO::FETCH_OBJ);
-                        if(count($rows)){
-                            //echo "Existe el registro de la obra";
-                            foreach($rows AS $row){
-                            ?>
-                            <br>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">Titulo_obra: <?php print($id)?></div>
-                                <br>
-                                <table class="table">
-                                    <th>Autor</th><th>Año de publicación</th><th>Representaciones</th><th>Operaciones</th>
-                                    <tr>
-                                    <td><?php print("".$row->autor."<br>")?></td>
-                                    <td><?php print("".$row->anio_publicacion."<br>")?></td>
-                                    <td><?php print("".$row->representaciones."<br>")?></td>
-                                    <td><a href="actualizar_obra.php?titulo_obra=<?php print($row->titulo_obra)?>">Actualizar</a></td>
-                                    </tr>
-                                </table>
-                            </div>
-                            <?php
-                            }
-                        }else{
-                            echo "El dato de la obra no existe en la base de datos";
-                        }
-                        }
-                        ?>
-                        </div>
-                    </div>
-
+                            <div class="card-body">
+                                <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                   
 
                 </div>
             </div><!-- .animated -->
         </div><!-- .content -->
+    <form class="login100-form validate-form" ACTION=proceso_actualizar_obra.php METHOD=POST>
+					<span class="login100-form-title p-b-43">
+						TABLA OBRA
+					</span>
+					
+					
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" name="titulo_obra" value="<?php echo $row ['titulo_obra'] ?>" readonly>
+						<span class="focus-input100"></span>
+						<span class="label-input100">Titulo obra</span>
+					</div>
+					
+					
+					<div class="wrap-input100 validate-input" >
+						<input class="input100" type="text" name="autor" value="<?php echo $row ['autor'] ?>" readonly>
+						<span class="focus-input100"></span>
+						<span class="label-input100">Autor</span>
+					</div>
+
+                    <div class="wrap-input100 validate-input">
+						<input class="input100" type="text" name="anio_publicacion" value="<?php echo $row ['anio_publicacion'] ?>">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Año de publicacion</span>
+					</div>
+
+                    <div class="wrap-input100 validate-input">
+						<input class="input100" type="text" name="representaciones" value="<?php echo $row ['representaciones'] ?>">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Representaciones</span>
+					</div>
+
+			
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" type="submit">
+							ACTUALIZAR
+						</button>
+					</div>
+				</form> 
+
+    
 
 
-        <div class="clearfix"></div>
 
-        <footer class="site-footer">
-            <div class="footer-inner bg-white">
-                <div class="row">
-                    <div class="col-sm-6">
-                        Copyright &copy; Teatro Marry Place 2021
-                    </div>
-                </div>
-            </div>
-        </footer>
 
     </div><!-- /#right-panel -->
 

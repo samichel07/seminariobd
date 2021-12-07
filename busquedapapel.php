@@ -205,11 +205,12 @@
                                 <div class="panel-heading">Nombre_papel: <?php print($id)?></div>
                                 <br>
                                 <table class="table">
-                                    <th>Obra</th><th>Duración del personaje en escena</th><th>Atrezo</th>
+                                    <th>Obra</th><th>Duración del personaje en escena</th><th>Atrezo</th><th>Operaciones</th>
                                     <tr>
                                     <td><?php print("".$row->obra."<br>")?></td>
                                     <td><?php print("".$row->duracion."<br>")?></td>
                                     <td><?php print("".$row->atrezo."<br>")?></td>
+                                    <td><a href="busqueda_papel.php?nombre_papel=<?php print($row->nombre_papel)?>">Actualizar</a></td>
                                     </tr>
                                 </table>
                             </div>

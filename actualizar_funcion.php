@@ -1,9 +1,12 @@
 <?php 
    require 'conexion_teatro.php';
-   $id=$_GET['id']; 
-   $sql="SELECT *  FROM funcion  WHERE id_funcion='$id'";
-   $query=mysqli_query($db,$sql);
-   $row=mysqli_fetch_array($query);
+   if(isset($_GET['id'])){
+    $id=$_GET['id']; 
+    $sql="SELECT *  FROM funcion  WHERE id_funcion='$id'";
+    $query=mysqli_query($db,$sql);
+    $row=mysqli_fetch_array($query);
+   }
+  
 ?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
