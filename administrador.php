@@ -117,6 +117,7 @@
                         <ul class="sub-menu children dropdown-menu">
                         <li><i class="fa fa-table"></i><a href="agregar_afinidad_form.php">Agregar nueva afinidad</a></li>
                             <li><i class="fa fa-table"></i><a href="busquedaafinidad.php">Búsqueda de afinidades</a></li>
+                            <li><i class="fa fa-table"></i><a href="tabla_eliminar_afinidad.php">Eliminar afinidades</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
@@ -124,6 +125,7 @@
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-table"></i><a href="agregar_funcion_form.php">Agregar nueva funcion</a></li>
                             <li><i class="fa fa-table"></i><a href="busquedafuncion.php">Búsqueda de funciones</a></li>
+                            <li><i class="fa fa-table"></i><a href="tabla_eliminar_funciones.php">Eliminar funciones</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
